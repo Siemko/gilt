@@ -3,9 +3,9 @@ using Microsoft.Extensions.Localization;
 
 namespace gilt.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
-    public class TranslateController : ControllerBase
+    public class TranslateController : Controller
     {
         private readonly IStringLocalizer<TranslateController> _localizer;
 
@@ -16,9 +16,9 @@ namespace gilt.Controllers
 
         // GET api/values
         [HttpGet]
-        public ActionResult<string> Get()
+        public IActionResult Get()
         {
-            return _localizer["Title"].Value;
+            return Json(_localizer["Title"].Value);
         }
     }
 }
